@@ -2,8 +2,6 @@
 // PRG/421 Week 1 - BicycleDemo
 // June 11, 2018
 
-package clefebvre.prg421;
-
 class BicycleDemo {
     public static void main(String[] args) {
 
