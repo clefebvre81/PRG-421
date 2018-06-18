@@ -19,7 +19,7 @@ public class Week2 {
         InputStream istream;
         OutputStream ostream = null;
         int d;
-        final int EOF = -1;
+        final int EOF = -1; // variable to signal end of file
         istream = System.in;
 
         // accepts file input
@@ -34,19 +34,22 @@ public class Week2 {
             BufferedReader bufferedReader =
                     new BufferedReader(fileReader);
 
-            System.out.println("Here are the contents of the current file names " + fileName + ":\n");
+            // Displays content of file data.txt if it already exists
+            System.out.println("Here are the contents of the current file named " + fileName + ":\n");
             while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
-
             bufferedReader.close();
-        } catch (FileNotFoundException ex) {
+        }
+        // Exception handling
+        catch (FileNotFoundException ex) {
             System.out.println("Unable to open file '" + fileName + "'");
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.out.println("Error reading file '" + fileName + "'");
         }
 
-
+        // Output to ask for the users input
         System.out.println("\nType here (Press Enter)(Ctrl+Shift+Del to End):");
         File outFile = new File("data.txt");
 
@@ -55,13 +58,19 @@ public class Week2 {
             ostream = new FileOutputStream(outFile);    // output file name is data.txt
             while ((d = istream.read()) != EOF)
                 ostream.write(d);
-        } catch (IOException e) {
+        }
+        // Error handling
+        catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
-        } finally {
+        }
+        // Closes the input and output stream
+        finally {
             try {
                 istream.close();
                 ostream.close();
-            } catch (IOException e) {
+            }
+            // Error if the file cannot be closed
+            catch (IOException e) {
                 System.out.println("File did not close");
             }
         }
